@@ -26,9 +26,15 @@ class MainActivity : AppCompatActivity() {
                 tipButton.isEnabled = s.length > 0 && !s.toString().equals("$")
                 if (amountText.text.contains('.')) {
                     val len = amountText.text.length
-                    if (amountText.text.toString()[len-4] == '.') {
+                    if ((len >= 4 && amountText.text.toString()[len-4] == '.')) {
                         screenVal.text = lastVal
                         amountText.setSelection(len-1)
+                    }
+
+                } else {
+                    if (amountText.text.toString().equals("$00")) {
+                        screenVal.text = lastVal
+                        amountText.setSelection(2)
                     }
                 }
                 lastVal = amountText.text.toString()
